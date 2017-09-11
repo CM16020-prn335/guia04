@@ -1,0 +1,7 @@
+SELECT tp.nombre,tp.idTipoPost FROM Post p
+JOIN p.idTipoPost tp
+GROUP BY tp.idTipoPost
+HAVING COUNT(tp) >= ALL 
+   (SELECT COUNT(p)
+    FROM Post p
+    GROUP BY p.idTipoPost)
